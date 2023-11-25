@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="mystyle.css">
+<head>
+    <script src="script.js"></script>
+</head>
+<html>
+
+  <body style="background-color:rgb(225, 242, 255);">
+    
+    <nav>
+		<a class="active" href="#Home">Home</a>
+		<a href="index2.html">Guía de usuario</a>
+		<a href="help.html">Ayuda</a>
+		<a href="contacto.html">Contacto</a>
+	</nav>
+    <div id="recuadro" class="square"></div>
+    <div id="header">
+        <h1 id="titulo" style="color:rgb(0, 0, 9);text-align:center;font-size:25px;font-family: sans-serif;">Inspección de tuberías</h1>
+        <h1 id="subtitulo" style="color:rgb(3, 58, 159);text-align:center;font-size:14px;font-family: sans-serif;">Garantizando la seguridad y calidad de las tuberías</h1>
+    </div>
+    
+    <div id="video">
+        <img src="grafica.png" width="50%"/>
+    </div>
+
+    <div id="buttons">
+        <label class="switch">
+            <input type="checkbox" id="toggleSwitch" onclick="toggleSwitch()">
+            <span class="slider"></span>
+        </label>
+        <h1 id="inspeccion1" style="color:rgb(0, 0, 9);text-align:center;font-size:16px;font-family: sans-serif;">Inspección manual</h1>
+        <h1 id="inspeccion2" style="color:rgb(0, 0, 9);text-align:center;font-size:16px;font-family: sans-serif;">Inspección automática</h1>
+        <button id="button3" onclick="openNewWindow2()">Análisis de fisuras</button>
+    </div>
+    
+    <div id="posiciones">
+        <p id="posicion" style="color:rgb(0, 0, 9);text-align:center;font-size:15px;font-family: sans-serif;">Velocidad del vehículo</p>
+        <p id="posicion2" style="color:rgb(0, 0, 9);text-align:center;font-size:15px;font-family: sans-serif;">Ángulo de las cámaras</p>
+        <p id="velocidad" style="color:rgb(0, 0, 9);text-align:center;font-size:15px;font-family: sans-serif;">Valores velocidad</p>
+        <p id="giro" style="color:rgb(0, 0, 9);text-align:center;font-size:15px;font-family: sans-serif;">Valores giro</p>
+    </div>
+    
+    <div id="bateria">
+        <h1 style="color:rgb(0, 0, 9);text-align:left;font-size:15px;font-family: sans-serif;">Nivel de Batería</h1>
+        <meter id="battery" value="50" min="0" max="100"></meter>
+        <p id="indicador_bateria" style="color:rgb(0, 0, 9);text-align:left;font-size:15px;font-family: sans-serif;">50% de batería restante</p>
+    </div>
+
+    <div id="sonar">
+        <h1 id="textografica" style="color:rgb(0, 0, 9);text-align:center;font-size:20px;font-family: sans-serif;">Grafica del perfil de la tubería</h1>
+        <img  src="grafica.png" width="80%"/> 
+    </div>
+    
+    <div id="luces_led">
+        <h1 style="color:rgb(0, 0, 9);text-align:left;font-size:15px;font-family: sans-serif;">Intensidad de Luz</h1>
+        <input type="range" min="0" max="100" step="1" id="myRange" style="color:rgb(0, 7, 9)" onchange="actualizarValor(this.value)">
+    </div>
+
+    <div id="fisuras">
+        <h1 style="color:rgb(0, 0, 9);text-align:left;font-size:15px;font-family: sans-serif;">Análisis de fisuras</h1>
+        <button id="button_fisura" onclick="openNewWindow2()">Empezar</button>
+    </div>
+
+    <div id="numeroContainer" style="display: none;">
+        <label for="numero">Velocidad del vehículo:</label>
+        <input type="number" id="numero" name="numero">
+        <label>m/s</label>
+    </div>
+
+    <script>
+        const messageDiv = document.getElementById('textos');
+        const eventSource = new EventSource('/stream1');
+        eventSource.onmessage = (event) => {
+            messageDiv.innerHTML = event.data;
+        };
+    </script>
+    <script>
+        function openNewWindow() {
+            
+            var childWindow = window.open("/open-window", "NewWindow", "width=500,height=500");
+            childWindow.addEventListener('unload', function() {
+            var valor = childWindow.valor;
+            document.getElementById('textos').innerHTML = valor;
+            alert("La velocidad asignada para el modo automatico es de: " + valor);
+            });
+        }
+        
+    </script>
+    <script>
+        function openNewWindow2() {
+            
+            var childWindow = window.open("/open-window2", "NNWindow", "width=500,height=500");
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+
+ 
+  </body>
+
+</html>

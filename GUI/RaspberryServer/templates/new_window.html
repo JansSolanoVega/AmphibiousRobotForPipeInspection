@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Configuración del modo automático</title>
+        <style>
+            #Titulo{
+            position: relative;
+            top: 100px;
+            left: 100px;
+            }
+            #etiqueta{
+            position: relative;
+            top: 180px;
+            left: 80px;
+            }
+            #cuadro{
+            position: relative;
+            top: 180px;
+            left: 120px;
+            }
+            #boton{
+            position: relative;
+            top: 280px;
+            left: 70px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <!-- Etiqueta de título -->
+        <h1 id="Titulo">Inspección Automática</h1>
+    
+        <!-- Etiqueta y cuadro de texto -->
+        <label id="etiqueta" for="nombre">Velocidad:</label>
+        <input id="cuadro" type="text" id="nombre" name="nombre">
+    
+        <!-- Botón -->
+        <button id ="boton" type="button" onclick="guardarNombre()">Aceptar</button>
+
+        <script>
+            function guardarNombre() {
+                var nombre = document.getElementById("cuadro").value;
+                window.valor = nombre;
+            }
+          </script>
+    </body>
+</html>

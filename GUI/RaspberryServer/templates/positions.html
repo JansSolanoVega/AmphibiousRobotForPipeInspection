@@ -1,0 +1,15 @@
+<html>
+    <body>
+    <h1>Real-time text updates with SSE</h1>
+    <div id="message"></div>
+
+    <script>
+        const messageDiv = document.getElementById('message');
+        const eventSource = new EventSource('/stream1');
+        eventSource.onmessage = (event) => {
+            messageDiv.innerHTML = event.data;
+        };
+    </script>
+    </body>
+</html>    
+    

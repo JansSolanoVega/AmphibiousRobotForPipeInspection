@@ -1,0 +1,11 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Folders
+RecurrentModel/images/
+RecurrentModel/trainset/
+RecurrentModel/trainsetRNN/
+RecurrentModel/runs/
+RecurrentModel/trainedModels/
+RecurrentModel/Crack_Segmentation_Dataset/

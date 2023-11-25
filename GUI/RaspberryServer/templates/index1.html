@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="mystyle.css">
+<style>
+  img {
+  width: 640px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-115%, -60%);
+  }
+</style>
+
+<html>
+
+  <body style="background-color:rgb(208, 239, 250);">
+    <h1 style="color:rgb(0, 0, 9);text-align:center;">Pipe inspection - Live streaming</h1>
+    <div>
+
+        <img src="{{ url_for('video') }}" width="50%"/>
+    </div>
+            
+  </body>
+
+
+</html>
